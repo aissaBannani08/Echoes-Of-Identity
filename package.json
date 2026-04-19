@@ -1,0 +1,33 @@
+{
+  "name": "echoes-of-identity",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "d": "^1.0.2",
+    "framer-motion": "^11.2.6",
+    "lucide-react": "^0.378.0",
+    "next": "^14.2.35",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^10.2.1",
+    "eslint-config-next": "^16.2.3",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5"
+  }
+}
