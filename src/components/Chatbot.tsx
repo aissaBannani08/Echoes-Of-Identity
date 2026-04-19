@@ -44,7 +44,12 @@ export default function Chatbot() {
       });
 
       if (!res.ok) {
-        throw new Error('Failed to get a response from the server.');
+        let errMessage = 'Failed to get a response from the server.';
+        try {
+          const errorData = await res.json();
+          errMessage = errorData?.error || errMessage;
+        } catch (e) {}
+        throw new Error(errMessage);
       }
 
       const returnedMessage = await res.json();

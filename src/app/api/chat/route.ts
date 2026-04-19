@@ -24,10 +24,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    const openaiApiKey = process.env.OPENAI_API_KEY;
+    const groqApiKey = process.env.GROQ_API_KEY;
 
-    if (!openaiApiKey) {
-      return NextResponse.json({ error: 'OpenAI API Key is missing' }, { status: 500 });
+    if (!groqApiKey) {
+      return NextResponse.json({ error: 'Groq API Key is missing' }, { status: 500 });
     }
 
     const apiMessages = [
@@ -35,22 +35,27 @@ export async function POST(req: Request) {
       ...messages
     ];
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${openaiApiKey}`,
+        Authorization: `Bearer ${groqApiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o',
+        model: 'llama-3.3-70b-versatile',
         messages: apiMessages,
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error('OpenAI API Error:', errorData);
-      return NextResponse.json({ error: 'Failed to fetch response from OpenAI' }, { status: response.status });
+      console.error('Groq API Error:', errorData);
+      let parsedError = 'Failed to fetch response from Groq';
+      try {
+        const parsed = JSON.parse(errorData);
+        parsedError = parsed?.error?.message || parsedError;
+      } catch {}
+      return NextResponse.json({ error: parsedError }, { status: response.status });
     }
 
     const data = await response.json();
