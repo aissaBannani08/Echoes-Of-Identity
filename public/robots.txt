@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /_next/static/
+Allow: /favicon.ico
+Allow: /icon.png
+Allow: /apple-icon.png
+Allow: /icon-48.png
+Allow: /icon-96.png
+Allow: /icon-512.png
+
+Sitemap: https://echoes-of-identity.vercel.app/sitemap.xml

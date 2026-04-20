@@ -13,25 +13,31 @@ async function generateFavicons() {
   try {
     console.log('Generating favicons from:', sourceImage);
 
-    // 32x32 PNG for standard favicon
+    // Standard Favicon (32x32)
     await sharp(sourceImage)
       .resize(32, 32)
       .toFile(path.join(publicDir, 'icon.png'));
-    console.log('Created icon.png (32x32)');
-
-    // 32x32 "ICO" (using PNG format which is widely supported even with .ico extension)
     await sharp(sourceImage)
       .resize(32, 32)
       .toFile(path.join(publicDir, 'favicon.ico'));
-    console.log('Created favicon.ico (32x32)');
+    console.log('Created 32x32 icons');
 
-    // 180x180 for Apple devices
+    // Google SEO Favicons (Multiples of 48)
+    await sharp(sourceImage)
+      .resize(48, 48)
+      .toFile(path.join(publicDir, 'icon-48.png'));
+    await sharp(sourceImage)
+      .resize(96, 96)
+      .toFile(path.join(publicDir, 'icon-96.png'));
+    console.log('Created Google SEO icons (48x48, 96x96)');
+
+    // Apple Touch Icon (180x180)
     await sharp(sourceImage)
       .resize(180, 180)
       .toFile(path.join(publicDir, 'apple-icon.png'));
     console.log('Created apple-icon.png (180x180)');
 
-    // 512x512 for high-res / manifest
+    // Large Manifest Icon (512x512)
     await sharp(sourceImage)
       .resize(512, 512)
       .toFile(path.join(publicDir, 'icon-512.png'));

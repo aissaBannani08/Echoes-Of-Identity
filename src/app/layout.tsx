@@ -20,16 +20,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://echoes-of-identity.vercel.app"),
   title: "Echoes of Identity",
   description: "A Living Archive of Voices Across Time preserving Jewish and Muslim stories.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: "/apple-icon.png",
-  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
