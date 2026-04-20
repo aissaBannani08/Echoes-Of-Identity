@@ -37,7 +37,6 @@ export default function ArchiveSection() {
               transition={{ duration: 0.8, delay: i * 0.1 }}
               className="group cursor-pointer border border-oud/30 bg-midnightAlt p-8 hover:border-gold/50 transition-colors duration-500 flex flex-col items-start"
             >
-              <div className="text-gold font-inter text-xs tracking-widest uppercase mb-4">{card.country}</div>
               <h3 className="font-cormorant text-2xl text-[#F5EFE0] mb-4">{card.title}</h3>
               <p className="font-inter text-parchment/60 text-sm leading-relaxed flex-grow">
                 {card.desc}
