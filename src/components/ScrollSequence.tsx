@@ -102,8 +102,8 @@ export default function ScrollSequence() {
 
         {/* Permanent dark overlay at top + bottom to always anchor text */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-midnight/70 via-midnight/30 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/85 via-midnight/45 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-midnight/80 via-midnight/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-midnight/95 via-midnight/60 to-transparent" />
         </div>
 
         {/* Scene layers */}
@@ -118,8 +118,8 @@ export default function ScrollSequence() {
 }
 
 /* ─── Shared text-shadow style for all visible-on-image text ─── */
-const SHARP_SHADOW = "0 2px 12px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,1)";
-const GOLD_GLOW   = "0 0 30px rgba(201,169,110,0.5), 0 2px 12px rgba(0,0,0,0.95)";
+const SHARP_SHADOW = "0 2px 14px rgba(0,0,0,1), 0 0 60px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,1)";
+const GOLD_GLOW   = "0 0 35px rgba(201,169,110,0.6), 0 2px 14px rgba(0,0,0,1)";
 
 /* ─── Scene 1: Hero ───────────────────────────────────────────── */
 function HeroIntro({ progress }: { progress: any }) {
@@ -300,8 +300,12 @@ function TheCall({ progress }: { progress: any }) {
   return (
     <motion.div
       style={{ opacity, scale }}
-      className="absolute inset-x-0 bottom-0 flex flex-col items-center justify-end text-center px-6 pb-24"
+      className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-24"
     >
+      {/* Local backdrop optimization for this specific scene */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/40 to-transparent pointer-events-none backdrop-blur-[2px]" />
+      
+      <div className="relative z-10 max-w-4xl">
       <h2
         className="font-cormorant text-4xl md:text-5xl text-white tracking-wide mb-3 leading-tight"
         style={{ textShadow: SHARP_SHADOW }}
@@ -361,6 +365,7 @@ function TheCall({ progress }: { progress: any }) {
       >
         It takes one interview to change how history remembers a community.
       </p>
-    </motion.div>
+    </div>
+  </motion.div>
   );
 }

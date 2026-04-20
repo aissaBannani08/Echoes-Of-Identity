@@ -1127,6 +1127,9 @@ video {
 .h-screen {
   height: 100vh;
 }
+.h-\[60\%\] {
+  height: 60%;
+}
 .max-h-\[600px\] {
   max-height: 600px;
 }
@@ -1548,6 +1551,21 @@ video {
   --tw-gradient-to: rgb(28 25 23 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-midnight\/40 {
+  --tw-gradient-from: rgb(10 14 24 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(10 14 24 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-midnight\/80 {
+  --tw-gradient-from: rgb(10 14 24 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(10 14 24 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-midnight\/95 {
+  --tw-gradient-from: rgb(10 14 24 / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(10 14 24 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .via-midnight\/30 {
   --tw-gradient-to: rgb(10 14 24 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(10 14 24 / 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1559,6 +1577,14 @@ video {
 .via-stone-950 {
   --tw-gradient-to: rgb(12 10 9 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #0c0a09 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-midnight\/40 {
+  --tw-gradient-to: rgb(10 14 24 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(10 14 24 / 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-midnight\/60 {
+  --tw-gradient-to: rgb(10 14 24 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(10 14 24 / 0.6) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .to-black {
   --tw-gradient-to: #000 var(--tw-gradient-to-position);
@@ -2009,6 +2035,10 @@ video {
 }
 .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.backdrop-blur-\[2px\] {
+  --tw-backdrop-blur: blur(2px);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .transition {
