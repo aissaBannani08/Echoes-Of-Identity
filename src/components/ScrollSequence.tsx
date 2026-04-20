@@ -302,10 +302,10 @@ function TheCall({ progress }: { progress: any }) {
       style={{ opacity, scale }}
       className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-24"
     >
-      {/* Local backdrop optimization for this specific scene */}
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/40 to-transparent pointer-events-none backdrop-blur-[2px]" />
+      {/* High-visibility backdrop for this specific scene */}
+      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-midnight/90 via-midnight/50 to-transparent pointer-events-none backdrop-blur-md" />
       
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-4xl px-8 py-10 rounded-2xl bg-midnight/30">
       <h2
         className="font-cormorant text-4xl md:text-5xl text-white tracking-wide mb-3 leading-tight"
         style={{ textShadow: SHARP_SHADOW }}
