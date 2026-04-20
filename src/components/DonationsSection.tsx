@@ -4,9 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ─── Data ─────────────────────────────────────────────────────── */
-const ONE_TIME_AMOUNTS = [5, 10, 25, 50, 100, 250];
+const ONE_TIME_AMOUNTS = [50, 100, 250, 500, 1000, 2500];
 const MONTHLY_AMOUNTS  = [5, 10, 15, 25, 50, 100];
-const SUGGESTED_ONCE   = 25;
+const SUGGESTED_ONCE   = 250;
 const SUGGESTED_MONTHLY = 15;
 
 const FAQ_ITEMS = [
@@ -409,7 +409,7 @@ export default function DonationsSection() {
               <p className="font-inter text-xs text-parchment/50 leading-relaxed">
                 {monthly
                   ? "When you give monthly, you provide the consistent funding we need to train interviewers, digitize testimonies, and keep the archive freely accessible—month after month, year after year."
-                  : "A one-time donation goes directly toward recording sessions, translation work, and archive infrastructure. No voice is too small. No story is too ordinary."}
+                  : "With your support, we’re able to create programs and experiences that bring people together, address real-world challenges, and open doors for communities in need."}
               </p>
             </div>
           </div>

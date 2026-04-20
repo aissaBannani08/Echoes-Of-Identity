@@ -8,6 +8,7 @@ export default function ArchiveSection() {
     { title: "Immigration", desc: "The journey to a new world and the memories left behind.", country: "United States 🇺🇸" },
     { title: "Discrimination", desc: "Facing history and finding courage in community.", country: "Ivory Coast 🇨🇮" },
     { title: "Culture", desc: "Preserving recipes, music, and the languages of home.", country: "Morocco 🇲🇦" },
+    { title: "Hardship", desc: "Stories of loss, struggle, and the difficult moments people have lived through — not just challenges, but the realities that shaped them." },
   ];
 
   return (
@@ -27,7 +28,7 @@ export default function ArchiveSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {cards.map((card, i) => (
             <motion.div
               key={i}
