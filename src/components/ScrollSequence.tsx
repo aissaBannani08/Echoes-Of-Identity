@@ -240,7 +240,7 @@ function ArchiveReveal({ progress }: { progress: any }) {
           className="font-cormorant text-4xl md:text-5xl tracking-wide mb-5 leading-tight"
           style={{ color: "#E8C97A", textShadow: GOLD_GLOW }}
         >
-          500 voices. <br /> One archive.
+          Voices. <br /> One archive.
         </h2>
         <ul
           className="font-inter text-base md:text-lg leading-relaxed space-y-3"

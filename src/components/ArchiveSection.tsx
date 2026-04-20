@@ -24,7 +24,7 @@ export default function ArchiveSection() {
           <h2 className="font-cormorant text-4xl md:text-6xl text-gold mb-6">The Archive</h2>
           <div className="w-px h-16 bg-gradient-to-b from-gold to-transparent mb-6"></div>
           <p className="font-inter text-parchment/70 max-w-2xl text-lg">
-            Explore 500+ testimonies. This living archive is organized by the foundational human experiences that connect these communities worldwide.
+            Explore Voices. This living archive is organized by the foundational human experiences that connect these communities worldwide.
           </p>
         </motion.div>
 

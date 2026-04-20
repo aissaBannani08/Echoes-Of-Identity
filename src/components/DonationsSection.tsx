@@ -153,8 +153,8 @@ function ImpactPanel({ monthly }: { monthly: boolean }) {
       <div className="absolute bottom-0 inset-x-0 px-5 py-4 flex justify-between"
         style={{ background: "linear-gradient(to top, rgba(10,14,24,0.9) 0%, transparent 100%)" }}
       >
-        {[["500+", "voices"], ["20+", "chapters"], ["8", "countries"]].map(([n, l]) => (
-          <div key={l} className="text-center">
+        {[["Voices", ""], ["20+", "chapters"], ["15+", "countries"]].map(([n, l]) => (
+          <div key={l || n} className="text-center">
             <div className="font-cinzel text-lg text-gold">{n}</div>
             <div className="font-inter text-[10px] tracking-widest uppercase text-parchment/40">{l}</div>
           </div>
