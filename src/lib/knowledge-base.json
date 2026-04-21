@@ -1,0 +1,39 @@
+{
+  "knowledge": [
+    {
+      "id": "mission",
+      "category": "About & Mission",
+      "keywords": ["mission", "about", "what is", "purpose", "goal", "who are you"],
+      "content": "Echoes of Identity is a living archive designed to explore identity, memory, and personal reflection. It aims to preserve Jewish and Muslim stories across time, highlighting identity, immigration, culture, and discrimination. The project builds bridges between communities through shared history."
+    },
+    {
+      "id": "archive",
+      "category": "Archive & Content",
+      "keywords": ["archive", "stories", "voices", "testimonies", "themes", "search", "explore", "hardship"],
+      "content": "The archive is organized by foundational human experiences: Identity, Immigration, Discrimination, Culture, and Hardship. It features over 500+ testimonies (Voices) from countries like Tunisia, Ivory Coast, Morocco, Israel, France, and the United States."
+    },
+    {
+      "id": "chapters",
+      "category": "Global Presence",
+      "keywords": ["chapters", "countries", "locations", "where", "global", "8 countries", "15+ countries"],
+      "content": "Echoes of Identity has a global presence with over 20 youth-led chapters operating across more than 15+ countries worldwide. These chapters empower local youth to record and preserve their community's history."
+    },
+    {
+      "id": "participation",
+      "category": "Join & Participate",
+      "keywords": ["join", "participate", "contribute", "submit", "be part of", "how to help", "get involved", "record", "interview"],
+      "content": "You can participate by recording your own story or that of a family member using our guided process. You can also join the project by starting a chapter in your country or becoming a youth interviewer. Click 'Get Involved' on the website to start your submission."
+    },
+    {
+      "id": "donations",
+      "category": "Support",
+      "keywords": ["donate", "support", "money", "fund", "give", "help", "impact"],
+      "content": "Financial support helps us train interviewers, digitize testimonies, and ensure the archive remains free and accessible for generations. One-time and monthly donations are available via the 'Donate' section."
+    }
+  ],
+  "synonyms": {
+    "join": ["participate", "contribute", "submit", "be part of", "involved", "help"],
+    "archive": ["voices", "stories", "testimonies", "collection", "records"],
+    "mission": ["about", "purpose", "goal", "identity"]
+  }
+}
