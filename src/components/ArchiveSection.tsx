@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ArchiveSection() {
   const cards = [
@@ -30,23 +31,24 @@ export default function ArchiveSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="group cursor-pointer border border-oud/30 bg-midnightAlt p-8 hover:border-gold/50 transition-colors duration-500 flex flex-col items-start"
-            >
-              <h3 className="font-cormorant text-2xl text-[#F5EFE0] mb-4">{card.title}</h3>
-              <p className="font-inter text-parchment/60 text-sm leading-relaxed flex-grow">
-                {card.desc}
-              </p>
-              <div className="mt-8 flex items-center text-gold text-sm group-hover:text-[#E8C97A] transition-colors">
-                <span className="mr-2 uppercase tracking-widest text-[10px]">Read Stories</span>
-                →
-              </div>
-            </motion.div>
+            <Link key={i} href="/archive" className="block h-full">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                className="group cursor-pointer border border-oud/30 bg-midnightAlt p-8 hover:border-gold/50 transition-colors duration-500 flex flex-col items-start h-full"
+              >
+                <h3 className="font-cormorant text-2xl text-[#F5EFE0] mb-4">{card.title}</h3>
+                <p className="font-inter text-parchment/60 text-sm leading-relaxed flex-grow">
+                  {card.desc}
+                </p>
+                <div className="mt-8 flex items-center text-gold text-sm group-hover:text-[#E8C97A] transition-colors">
+                  <span className="mr-2 uppercase tracking-widest text-[10px]">View Stories</span>
+                  →
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
