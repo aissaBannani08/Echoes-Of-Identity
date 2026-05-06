@@ -120,7 +120,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
 
         <div className="relative z-10 flex flex-col items-center">
           {/* Main Title - Split into characters */}
-          <div className="flex overflow-hidden mb-6">
+          <div className="flex mb-6">
             {title.split("").map((char, index) => (
               <motion.span
                 key={index}

@@ -302,27 +302,35 @@ function TheCall({ progress }: { progress: any }) {
       style={{ opacity, y }}
       className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pb-20"
     >
-      {/* Subtle deep gradient for text readability, NO BLUR */}
-      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-midnight via-midnight/40 to-transparent pointer-events-none" />
+      {/* Enhanced dark gradient for absolute readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20 pointer-events-none" />
       
+      {/* Radial scrim specifically behind the text block */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(10,14,24,0.7) 0%, transparent 80%)",
+        }}
+      />
+
       <div className="relative z-10 max-w-5xl">
         {/* Decorative Top Line */}
         <motion.div 
           initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: "80px", opacity: 0.4 }}
+          whileInView={{ width: "100px", opacity: 0.6 }}
           className="h-px bg-gold mx-auto mb-10"
         />
 
         <h2
-          className="font-playfair italic font-medium text-4xl md:text-7xl text-parchment tracking-tight mb-6 leading-[1.1]"
-          style={{ textShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
+          className="font-playfair italic font-medium text-4xl md:text-7xl text-parchment tracking-tight mb-8 leading-[1.1]"
+          style={{ textShadow: "0 10px 40px rgba(0,0,0,0.8)" }}
         >
           Your story deserves <br className="hidden md:block" /> to be remembered.
         </h2>
 
         <p
-          className="font-cinzel text-sm md:text-base tracking-[0.4em] uppercase mb-12"
-          style={{ color: "#C9A96E", textShadow: GOLD_GLOW }}
+          className="font-cinzel text-sm md:text-base font-bold tracking-[0.2em] mb-12"
+          style={{ color: "#E8C97A", textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}
         >
           Join the archive · Share a testimony · Start a chapter
         </p>
@@ -341,7 +349,7 @@ function TheCall({ progress }: { progress: any }) {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="px-12 py-5 border border-gold/40 text-gold font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm hover:bg-gold/5 hover:border-gold transition-all duration-300"
-            style={{ textShadow: "0 0 10px rgba(201,169,110,0.3)" }}
+            style={{ textShadow: "0 0 15px rgba(0,0,0,0.5)" }}
           >
             Join the Project
           </motion.button>
@@ -349,8 +357,8 @@ function TheCall({ progress }: { progress: any }) {
 
         <div className="max-w-xl mx-auto">
           <p
-            className="font-inter text-[10px] md:text-xs tracking-[0.4em] uppercase leading-loose opacity-30"
-            style={{ color: "var(--parchment)" }}
+            className="font-inter text-[10px] md:text-xs tracking-[0.3em] uppercase leading-loose opacity-60 font-medium"
+            style={{ color: "var(--parchment)", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
           >
             It takes one interview to change how history remembers a community.
           </p>
