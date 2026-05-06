@@ -243,7 +243,7 @@ export default function DonationsSection() {
                       : "text-parchment/60 hover:text-parchment"
                   }`}
                 >
-                  {isMonthly ? "Monthly ❤️" : "Give once"}
+                  {isMonthly ? "Monthly" : "Give once"}
                 </button>
               ))}
             </div>
