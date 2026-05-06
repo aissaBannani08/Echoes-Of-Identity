@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, Cinzel_Decorative, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import Chatbot from "@/components/Chatbot";
 import "./globals.css";
 
@@ -36,6 +37,19 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cormorant.variable} ${cinzelDecorative.variable} ${playfair.variable} font-sans bg-midnight text-parchment antialiased selection:bg-gold selection:text-midnight`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9G0RJ68RY8"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-9G0RJ68RY8');
+          `}
+        </Script>
         {children}
         <Chatbot />
       </body>

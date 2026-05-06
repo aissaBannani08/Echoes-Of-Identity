@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,25 +32,30 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center space-x-8">
-          {["Archive", "Historical Context", "Global Map", "Get Involved", "Donate"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-              className={`font-inter text-sm transition-colors ${
-                item === "Donate"
-                  ? "text-gold hover:text-[#E8C97A] font-semibold"
-                  : "text-parchment hover:text-gold"
-              }`}
-            >
-              {item}
-            </a>
-          ))}
+          {["Archive", "Historical Context", "Global Map", "Get Involved", "Donate"].map((item) => {
+            const isArchive = item === "Archive";
+            const hash = `#${item.toLowerCase().replace(/ /g, "-")}`;
+            const href = isArchive ? "/archive" : (pathname === "/" ? hash : `/${hash}`);
+            return (
+              <Link
+                key={item}
+                href={href}
+                className={`font-inter text-sm transition-colors ${
+                  item === "Donate"
+                    ? "text-gold hover:text-[#E8C97A] font-semibold"
+                    : "text-parchment hover:text-gold"
+                }`}
+              >
+                {item}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Interactive but no redirect */}
-        <button className="px-6 py-2 border border-gold text-gold font-inter text-sm hover:bg-gold hover:text-midnight transition-colors duration-300">
+        {/* Interactive redirect */}
+        <Link href="/archive" className="px-6 py-2 border border-gold text-gold font-inter text-sm hover:bg-gold hover:text-midnight transition-colors duration-300">
           Enter the Archive
-        </button>
+        </Link>
       </div>
     </motion.nav>
   );

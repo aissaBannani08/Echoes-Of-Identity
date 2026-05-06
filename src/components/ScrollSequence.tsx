@@ -295,77 +295,67 @@ function TheMission({ progress }: { progress: any }) {
 /* ─── Scene 5: The Call ───────────────────────────────────────── */
 function TheCall({ progress }: { progress: any }) {
   const opacity = useTransform(progress, [0.8, 0.86, 1, 1], [0, 1, 1, 1]);
-  const scale   = useTransform(progress, [0.8, 0.86], [0.94, 1]);
+  const y       = useTransform(progress, [0.8, 0.86], [40, 0]);
 
   return (
     <motion.div
-      style={{ opacity, scale }}
-      className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-24"
+      style={{ opacity, y }}
+      className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pb-20"
     >
-      {/* High-visibility backdrop for this specific scene */}
-      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-midnight/90 via-midnight/50 to-transparent pointer-events-none backdrop-blur-md" />
+      {/* Subtle deep gradient for text readability, NO BLUR */}
+      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-midnight via-midnight/40 to-transparent pointer-events-none" />
       
-      <div className="relative z-10 max-w-4xl px-8 py-10 rounded-2xl bg-midnight/30">
-      <h2
-        className="font-cormorant text-4xl md:text-5xl text-white tracking-wide mb-3 leading-tight"
-        style={{ textShadow: SHARP_SHADOW }}
-      >
-        Your story deserves to be remembered.
-      </h2>
-      <p
-        className="font-inter text-base md:text-lg mb-10"
-        style={{ color: "#E8C97A", textShadow: GOLD_GLOW }}
-      >
-        Join the archive. Share a testimony. Start a chapter in your country.
-      </p>
+      <div className="relative z-10 max-w-5xl">
+        {/* Decorative Top Line */}
+        <motion.div 
+          initial={{ width: 0, opacity: 0 }}
+          whileInView={{ width: "80px", opacity: 0.4 }}
+          className="h-px bg-gold mx-auto mb-10"
+        />
 
-      <div className="flex flex-col sm:flex-row gap-5 items-center">
-        {/* PRIMARY — glowing gold, interactive but no redirect */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="relative px-10 py-4 bg-gold text-midnight font-cinzel font-bold text-sm tracking-[0.18em] rounded-sm overflow-hidden group"
-          style={{
-            boxShadow: "0 0 18px rgba(201,169,110,0.6), 0 0 42px rgba(201,169,110,0.25)",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow =
-              "0 0 32px rgba(232,201,122,0.8), 0 0 70px rgba(232,201,122,0.4)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow =
-              "0 0 18px rgba(201,169,110,0.6), 0 0 42px rgba(201,169,110,0.25)";
-          }}
+        <h2
+          className="font-playfair italic font-medium text-4xl md:text-7xl text-parchment tracking-tight mb-6 leading-[1.1]"
+          style={{ textShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
         >
-          {/* shimmer sweep */}
-          <span
-            className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"
-            style={{
-              background:
-                "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%)",
-            }}
-          />
-          <span className="relative z-10">Enter the Archive</span>
-        </motion.button>
+          Your story deserves <br className="hidden md:block" /> to be remembered.
+        </h2>
 
-        {/* SECONDARY — ghost, interactive but no redirect */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="px-10 py-4 border border-gold/70 font-inter font-medium text-sm tracking-[0.15em] rounded-sm transition-colors duration-300 hover:bg-gold/10 hover:border-gold"
-          style={{ color: "#E8C97A", textShadow: SHARP_SHADOW }}
+        <p
+          className="font-cinzel text-sm md:text-base tracking-[0.4em] uppercase mb-12"
+          style={{ color: "#C9A96E", textShadow: GOLD_GLOW }}
         >
-          Join the Project
-        </motion.button>
+          Join the archive · Share a testimony · Start a chapter
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 items-center justify-center mb-16">
+          <motion.button
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative px-12 py-5 bg-gold text-midnight font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm shadow-glow-gold hover:shadow-glow-gold-hover transition-all duration-300 group overflow-hidden"
+          >
+            <span className="relative z-10">Enter the Archive</span>
+            <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-12 py-5 border border-gold/40 text-gold font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm hover:bg-gold/5 hover:border-gold transition-all duration-300"
+            style={{ textShadow: "0 0 10px rgba(201,169,110,0.3)" }}
+          >
+            Join the Project
+          </motion.button>
+        </div>
+
+        <div className="max-w-xl mx-auto">
+          <p
+            className="font-inter text-[10px] md:text-xs tracking-[0.4em] uppercase leading-loose opacity-30"
+            style={{ color: "var(--parchment)" }}
+          >
+            It takes one interview to change how history remembers a community.
+          </p>
+        </div>
       </div>
-
-      <p
-        className="mt-8 font-inter text-xs tracking-widest uppercase"
-        style={{ color: "rgba(245,239,224,0.45)", textShadow: SHARP_SHADOW }}
-      >
-        It takes one interview to change how history remembers a community.
-      </p>
-    </div>
-  </motion.div>
+    </motion.div>
   );
 }
