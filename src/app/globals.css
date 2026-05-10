@@ -7,9 +7,14 @@
   --foreground: rgba(245, 239, 224, 0.6);
 }
 
+html {
+  font-size: 12px;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: 'Inter', sans-serif;
 }
 
 /* Hide scrollbar for cleaner cinematic experience */

@@ -3,112 +3,232 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ArchiveScene } from "@/components/echoes/archive-scene";
+import { MemoryConstellation } from "@/components/echoes/memory-constellation";
+import { SpotlightMouse } from "@/components/ui/spotlight";
+import { Sparkles, ArrowDown, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
+
+// Reusing data from previous version for consistency
+const featuredStories = [
+  {
+    year: "1948",
+    title: "The Exodus of Casablanca",
+    location: "Casablanca, Morocco",
+    excerpt: "A collection of personal artifacts and oral histories documenting the departure of families from the old Mellah.",
+    image: "/images/archive/archive_hero_building.png"
+  },
+  {
+    year: "1962",
+    title: "Echoes of Constantine",
+    location: "Constantine, Algeria",
+    excerpt: "Preserving the musical traditions and culinary heritage of the Jewish-Muslim shared spaces.",
+    image: "/images/archive/archive_quote_portrait.png"
+  },
+  {
+    year: "1924",
+    title: "The Baghdadi Letters",
+    location: "Baghdad, Iraq",
+    excerpt: "Correspondence between merchants and families that bridges the gap between old Mesopotamia and the modern world.",
+    image: "/images/archive/identity_bg_1778361042192.png"
+  }
+];
+
+const GrainOverlay = () => (
+  <div 
+    className="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay z-[100]"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+    }}
+  />
+);
 
 export default function ArchivePage() {
-  const placeholders = [
-    { id: 1, title: "The Weight of a Name", location: "Paris, France", date: "1984" },
-    { id: 2, title: "Echoes in the Courtyard", location: "Tunis, Tunisia", date: "1960" },
-    { id: 3, title: "A Mother's Recipe", location: "Casablanca, Morocco", date: "1972" },
-    { id: 4, title: "Silent Departure", location: "Baghdad, Iraq", date: "1951" },
-    { id: 5, title: "Letters from Exile", location: "New York, USA", date: "1990" },
-    { id: 6, title: "The Keys We Kept", location: "Algiers, Algeria", date: "1962" },
-  ];
-
   return (
-    <main className="w-full bg-midnight min-h-screen text-parchment relative overflow-hidden selection:bg-gold selection:text-midnight">
-      {/* Subtle grain texture overlay */}
-      <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay z-50"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-        }}
-      />
-      
+    <main className="w-full bg-[#05070A] min-h-screen text-parchment relative overflow-hidden selection:bg-gold selection:text-midnight">
+      <GrainOverlay />
       <Navbar />
 
-      <div className="pt-40 pb-16 px-6 max-w-5xl mx-auto text-center relative z-10">
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
+      {/* SECTION 1: Minimal Intro with Background */}
+      <section className="relative h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
+        {/* MemoryConstellation Background with Photo */}
+        <div className="absolute inset-0 z-0 opacity-60">
+           <MemoryConstellation usePhoto={true} />
+        </div>
+        
+        <div className="absolute inset-0 z-10 pointer-events-none">
+           <SpotlightMouse className="from-gold/5 via-transparent to-transparent" />
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="font-inter text-gold uppercase tracking-[0.3em] text-xs mb-6"
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center relative z-20"
         >
-          Historical Records
-        </motion.p>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="font-cormorant text-5xl md:text-7xl lg:text-8xl text-[#F5EFE0] mb-8 tracking-wide drop-shadow-lg"
-        >
-          Archive
-        </motion.h1>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-8 bg-gold/30" />
+            <span className="font-inter text-[9px] uppercase tracking-[0.6em] text-gold/60 font-bold italic">Volume I</span>
+            <div className="h-px w-8 bg-gold/30" />
+          </div>
+          
+          <h1 className="font-cinzel text-5xl md:text-8xl leading-none mb-4 tracking-tighter drop-shadow-2xl">
+            Archive
+          </h1>
+          <p className="font-cormorant text-lg md:text-2xl text-parchment/40 italic font-light drop-shadow-md">
+            "Echoes that bridge the silence of time."
+          </p>
+        </motion.div>
+
         <motion.div 
-          initial={{ opacity: 0, width: 0 }}
-          animate={{ opacity: 1, width: "80px" }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="h-[1px] bg-gold/50 mx-auto mb-8"
-        />
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="font-inter text-parchment/70 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-12 flex flex-col items-center gap-4 opacity-20 z-20"
         >
-          A collection of voices and lived experiences
-        </motion.p>
-      </div>
+          <span className="font-inter text-[8px] uppercase tracking-[0.4em]">Scroll to enter</span>
+          <ArrowDown size={12} />
+        </motion.div>
+      </section>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.9 }}
-        className="max-w-2xl mx-auto border border-oud/30 bg-midnightAlt/40 backdrop-blur-md p-8 text-center mb-24 relative overflow-hidden z-10 mx-6 md:mx-auto"
-      >
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-oud/30 to-transparent" />
-        <p className="font-inter text-gold uppercase tracking-[0.2em] text-[10px] mb-3 opacity-80">System Status</p>
-        <p className="font-cormorant text-2xl text-[#F5EFE0] tracking-wide">
-          Stories are being collected.<br className="md:hidden"/> The archive will open soon.
-        </p>
-      </motion.div>
+      {/* SECTION 2: Interactive Memory Constellation */}
+      <section className="py-20 relative">
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#05070A] to-transparent z-20" />
+        <ArchiveScene />
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-7xl mx-auto pb-40 relative z-10">
-        {placeholders.map((item, idx) => (
+      {/* SECTION 3: Featured Oral Histories */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div>
+            <h2 className="font-cinzel text-4xl text-white mb-3">Featured Records</h2>
+            <div className="h-0.5 w-16 bg-gold" />
+          </div>
+          <p className="font-inter text-parchment/40 text-[11px] max-w-xs font-light uppercase tracking-wider">
+            Selected archives from the MENA diaspora across generations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {featuredStories.map((story, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative flex flex-col"
+            >
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm mb-6 shadow-2xl border border-white/5">
+                <Image 
+                  src={story.image}
+                  alt={story.title}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 brightness-50 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-midnight/20 group-hover:bg-transparent transition-all duration-700" />
+                <div className="absolute top-4 left-4 font-cinzel text-xl text-gold/80">
+                  [{story.year}]
+                </div>
+              </div>
+              
+              <h3 className="font-cinzel text-xl text-parchment mb-3 group-hover:text-gold transition-colors tracking-tight">
+                {story.title}
+              </h3>
+              <p className="font-inter text-parchment/40 text-[11px] leading-relaxed mb-4 font-light">
+                {story.excerpt}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 4: Migration and Identity Themes */}
+      <section className="py-24 relative overflow-hidden bg-black/40">
+        <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+           <div className="w-full lg:w-1/2">
+             <div className="relative aspect-square max-w-sm mx-auto rounded-xl overflow-hidden border border-white/5 shadow-3xl group">
+                <div className="absolute inset-0 z-0">
+                   <MemoryConstellation isInteractive={true} usePhoto={true} photoPath="/memory.jpeg" />
+                </div>
+                {/* Subtle vignette for the box */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
+             </div>
+           </div>
+           
+           <div className="w-full lg:w-1/2">
+             <span className="font-inter text-[8px] uppercase tracking-[0.4em] text-gold/40 mb-4 block font-bold">Themes</span>
+             <h2 className="font-cinzel text-4xl md:text-5xl text-white mb-8 leading-tight">
+               Identity & <br /> <span className="text-gold italic">Preservation</span>
+             </h2>
+             
+             <div className="space-y-8">
+               {[
+                 { title: "Inherited Memory", desc: "How stories of the MENA region are passed down through generations." },
+                 { title: "Cultural Resilience", desc: "The preservation of traditions in the face of displacement." },
+                 { title: "Sacred Spaces", desc: "Documenting shared heritage across faith and culture." }
+               ].map((theme, i) => (
+                 <div key={i} className="flex gap-4 group">
+                   <div className="text-gold/20 font-cinzel text-xl pt-1">0{i+1}</div>
+                   <div>
+                     <h4 className="font-cinzel text-base text-white mb-1 group-hover:text-gold transition-colors tracking-wide">{theme.title}</h4>
+                     <p className="font-inter text-parchment/30 text-[11px] leading-relaxed max-w-sm font-light">{theme.desc}</p>
+                   </div>
+                 </div>
+               ))}
+             </div>
+           </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: Contribution CTA */}
+      <section className="py-40 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto px-6 relative z-10"
+        >
+          <h2 className="font-cinzel text-4xl md:text-6xl text-parchment mb-8">Add your voice to the archive.</h2>
+          <p className="font-inter text-parchment/60 mb-12 text-base md:text-lg leading-relaxed font-light">
+            Every story matters. Join our living museum by contributing your records, photographs, or personal testimonies.
+          </p>
+          
           <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 + idx * 0.1 }}
-            className="group relative p-[1px] bg-gradient-to-b from-oud/20 to-transparent hover:from-gold/40 transition-colors duration-700 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
           >
-            <div className="bg-[#0A0E18] h-full p-6 flex flex-col justify-between overflow-hidden shadow-2xl relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
-              <div className="w-full h-56 mb-8 bg-[#0E1520]/80 border border-oud/10 relative overflow-hidden group-hover:border-gold/20 transition-colors duration-700 flex items-center justify-center">
-                {/* Abstract blur shapes to represent a muted image */}
-                <div className="absolute w-32 h-32 bg-gold/5 rounded-full blur-2xl top-0 left-0 group-hover:bg-gold/10 transition-colors duration-1000 group-hover:scale-110"></div>
-                <div className="absolute w-40 h-40 bg-oud/10 rounded-full blur-3xl bottom-0 right-0 group-hover:bg-oud/20 transition-colors duration-1000 group-hover:scale-110"></div>
-                <div className="font-inter uppercase tracking-[0.2em] text-[9px] text-parchment/30 relative z-10 border border-parchment/10 px-3 py-1 rounded-sm backdrop-blur-sm">
-                  Awaiting Access
-                </div>
-              </div>
-              
-              <div className="relative z-20 flex-grow pt-2 border-t border-oud/20 group-hover:border-gold/30 transition-colors duration-700">
-                <div className="flex justify-between items-center mb-4 font-inter text-[10px] tracking-[0.15em] uppercase text-gold/60 group-hover:text-gold/90 transition-colors duration-500">
-                  <span>{item.date}</span>
-                  <span>{item.location}</span>
-                </div>
-                <h3 className="font-cormorant text-2xl md:text-3xl text-parchment/80 group-hover:text-[#F5EFE0] transition-colors duration-500 leading-snug">
-                  {item.title}
-                </h3>
-              </div>
-            </div>
+            <GlassButton 
+              className="font-cinzel text-xs tracking-[0.3em] uppercase px-12 py-6"
+            >
+              Become a Contributor
+            </GlassButton>
           </motion.div>
-        ))}
-      </div>
+        </motion.div>
+      </section>
 
       <Footer />
+      
+      <style jsx global>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes reverse-spin {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+        .animate-reverse-spin {
+          animation: reverse-spin 15s linear infinite;
+        }
+      `}</style>
     </main>
   );
 }
