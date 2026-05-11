@@ -1,37 +1,43 @@
-"use client";
+import HomeClient from "./HomeClient";
+import { Metadata } from "next";
 
-import { useState } from "react";
-import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
-import ScrollSequence from "@/components/ScrollSequence";
-import ArchiveSection from "@/components/ArchiveSection";
-import HistoricalContext from "@/components/HistoricalContext";
-import MapSection from "@/components/MapSection";
-import FaqSection from "@/components/FaqSection";
-import GetInvolved from "@/components/GetInvolved";
-import DonationsSection from "@/components/DonationsSection";
-import Footer from "@/components/Footer";
+export const metadata: Metadata = {
+  title: "Echoes of Identity | Home",
+  description: "An international oral history, cultural preservation, and storytelling initiative documenting the lived experiences of Jewish and Muslim communities worldwide.",
+  alternates: {
+    canonical: "https://echoesofidentity.org/",
+  },
+};
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Echoes of Identity",
+    "alternateName": ["EOI", "Echoes of Identity Initiative"],
+    "url": "https://www.echoesofidentity.org",
+    "description": "An international oral history, cultural preservation, and storytelling initiative documenting the lived experiences of Jewish and Muslim communities worldwide.",
+    "foundingDate": "2023",
+    "keywords": "oral history, Jewish community, Muslim community, cultural preservation, storytelling, diaspora, immigration, identity, youth nonprofit",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "High school students, researchers, historians, educators, Jewish communities, Muslim communities"
+    },
+    "knowsAbout": [
+      "Oral history", "Jewish diaspora", "Muslim diaspora",
+      "Cultural preservation", "Intergenerational storytelling",
+      "Holocaust testimony", "Immigration narratives",
+      "Identity and belonging", "Interfaith coexistence"
+    ]
+  };
 
   return (
-    <main className="w-full bg-midnight min-h-screen text-parchment selection:bg-gold selection:text-midnight">
-      {loading ? (
-        <Loader onComplete={() => setLoading(false)} />
-      ) : (
-        <>
-          <Navbar />
-          <ScrollSequence />
-          <ArchiveSection />
-          <HistoricalContext />
-          <MapSection />
-          <FaqSection />
-          <GetInvolved />
-          <DonationsSection />
-          <Footer />
-        </>
-      )}
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomeClient />
+    </>
   );
 }

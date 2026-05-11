@@ -21,8 +21,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Archive", href: "/archive" },
-    { name: "Context", href: pathname === "/" ? "#historical-context" : "/#historical-context" },
-    { name: "Stories", href: pathname === "/" ? "#get-involved" : "/#get-involved" },
+    { name: "History", href: pathname === "/" ? "#historical-context" : "/#historical-context" },
+    { name: "Testimonies", href: pathname === "/" ? "#get-involved" : "/#get-involved" },
   ];
 
   return (

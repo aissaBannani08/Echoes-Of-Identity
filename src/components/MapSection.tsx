@@ -30,7 +30,7 @@ export default function MapSection() {
           {/* Map Image (SVG dimensions 950x620) */}
           <img 
             src="/world-map.svg" 
-            alt="World Map" 
+            alt="Global map showing the locations of Echoes of Identity chapters and oral history collection points" 
             className="absolute top-0 left-0 w-full h-full object-cover opacity-70 mix-blend-screen mix-blend-plus-lighter"
             style={{ filter: "invert(1) opacity(0.8)", pointerEvents: "none" }} 
           />

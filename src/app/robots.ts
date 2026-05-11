@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ['/', '/api/chat', '/favicon.ico', '/icon.png', '/apple-icon.png'],
       disallow: ['/private/'],
     },
-    sitemap: 'https://echoes-of-identity.vercel.app/sitemap.xml',
+    sitemap: 'https://echoesofidentity.org/sitemap.xml',
   }
 }

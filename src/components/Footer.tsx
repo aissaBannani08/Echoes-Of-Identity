@@ -12,10 +12,10 @@ export default function Footer() {
         <div>
           <h4 className="font-inter text-gold text-xs tracking-widest uppercase mb-4">Links</h4>
           <ul className="space-y-3 font-inter text-sm text-parchment/70">
-            <li><a href="#archive" className="hover:text-gold transition-colors">Archive</a></li>
-            <li><a href="#historical-context" className="hover:text-gold transition-colors">Historical Context</a></li>
-            <li><a href="#get-involved" className="hover:text-gold transition-colors">Get Involved</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="#archive" className="hover:text-gold transition-colors">Digital Archive</a></li>
+            <li><a href="#historical-context" className="hover:text-gold transition-colors">Historical Research</a></li>
+            <li><a href="#get-involved" className="hover:text-gold transition-colors">Volunteer & Join</a></li>
+            <li><a href="/about" className="hover:text-gold transition-colors">About the Project</a></li>
           </ul>
         </div>
 

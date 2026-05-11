@@ -78,7 +78,7 @@ export default function ArchiveSection() {
                 {/* Background Image */}
                 <Image
                   src={card.image}
-                  alt={card.title}
+                  alt={`${card.title}: ${card.desc} - Echoes of Identity cultural preservation project`}
                   fill
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
