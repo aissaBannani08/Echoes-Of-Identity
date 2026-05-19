@@ -1,24 +1,15 @@
 "use client";
 
-import { useState, useTransition } from "react";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 import { UserAvatar } from "@/components/auth/UserAvatar";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { Loader2, LogOut, Mail, Calendar } from "lucide-react";
+import { Mail, Calendar } from "lucide-react";
 
 interface ProfileCardProps {
   user: User;
 }
 
-import { signOut } from "@/app/auth/actions";
-
 export function ProfileCard({ user }: ProfileCardProps) {
-  const [isPending, startTransition] = useTransition();
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
   const displayName =
     (user.user_metadata?.full_name as string | undefined) ??
     (user.user_metadata?.name as string | undefined) ??
@@ -31,25 +22,6 @@ export function ProfileCard({ user }: ProfileCardProps) {
     month: "long",
     day: "numeric",
   });
-
-  async function handleSignOut() {
-    setLoading(true);
-    const { error } = await signOut();
-
-    if (error) {
-      console.error("[SignOut]", error);
-      toast.error("Could not sign out. Please try again.");
-      setLoading(false);
-      return;
-    }
-
-    await createClient().auth.signOut({ scope: "local" });
-
-    startTransition(() => {
-      router.push("/login");
-      router.refresh();
-    });
-  }
 
   return (
     <div className="relative rounded-2xl border border-white/[0.06] bg-black/50 backdrop-blur-xl overflow-hidden">
@@ -87,22 +59,6 @@ export function ProfileCard({ user }: ProfileCardProps) {
 
         {/* Divider */}
         <div className="border-t border-white/[0.06]" />
-
-        {/* Sign out */}
-        <button
-          onClick={handleSignOut}
-          disabled={loading || isPending}
-          id="signout-btn"
-          aria-label="Sign out of your account"
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-parchment/60 text-sm font-inter hover:bg-red-500/10 hover:border-red-500/20 hover:text-red-400/80 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
-        >
-          {loading || isPending ? (
-            <Loader2 className="w-4 h-4 animate-spin" />
-          ) : (
-            <LogOut className="w-4 h-4" aria-hidden="true" />
-          )}
-          {loading || isPending ? "Signing out…" : "Sign out"}
-        </button>
       </div>
     </div>
   );

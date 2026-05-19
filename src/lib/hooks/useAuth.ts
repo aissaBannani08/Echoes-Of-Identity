@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import type { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
-import { createClient } from "@/lib/supabase/client";
+import { useAuthContext } from "@/components/providers/AuthProvider";
+import type { User } from "@supabase/supabase-js";
 
 export type AuthState =
   | { status: "loading" }
@@ -10,48 +9,19 @@ export type AuthState =
   | { status: "authenticated"; user: User };
 
 /**
- * useAuth — reactive UI only (avatars, buttons, cross-tab updates).
- * Never use this for access control; server components and middleware enforce auth.
+ * useAuth — reactive UI state hook that consumes the shared AuthProvider context.
+ * Resolves session persistence and prevents duplicate auth listeners/API requests.
  */
 export function useAuth(): AuthState {
-  const [state, setState] = useState<AuthState>({ status: "loading" });
+  const { status, user } = useAuthContext();
 
-  useEffect(() => {
-    const supabase = createClient();
-    let cancelled = false;
+  if (status === "authenticated" && user) {
+    return { status: "authenticated", user };
+  }
 
-    const applyFromUser = (user: User | null) => {
-      if (cancelled) return;
-      if (user) {
-        setState({ status: "authenticated", user });
-      } else {
-        setState({ status: "unauthenticated" });
-      }
-    };
+  if (status === "unauthenticated") {
+    return { status: "unauthenticated" };
+  }
 
-    void supabase.auth.getUser().then((res) => {
-      if (cancelled) return;
-      const user = res.data.user;
-      if (res.error) {
-        applyFromUser(null);
-        return;
-      }
-      applyFromUser(user);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      (_event: AuthChangeEvent, session: Session | null) => {
-        applyFromUser(session?.user ?? null);
-      }
-    );
-
-    return () => {
-      cancelled = true;
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  return state;
+  return { status: "loading" };
 }

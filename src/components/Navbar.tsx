@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
+import { UserDropdown } from "@/components/auth/UserDropdown";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -75,6 +76,8 @@ export default function Navbar() {
               Archive
             </GlassButton>
           </Link>
+          
+          <UserDropdown />
         </div>
       </motion.nav>
     </div>

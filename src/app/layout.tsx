@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, Cinzel_Decorative, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import Chatbot from "@/components/Chatbot";
+import { Toaster } from "sonner";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -42,6 +44,8 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+    // @ts-ignore
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
@@ -75,9 +79,25 @@ export default function RootLayout({
             gtag('config', 'G-9G0RJ68RY8');
           `}
         </Script>
-        {children}
-        <Chatbot />
+        <AuthProvider>
+          {children}
+          <Chatbot />
+        </AuthProvider>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: "rgba(14,21,32,0.95)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              color: "#F5EFE0",
+              fontFamily: "var(--font-inter)",
+              fontSize: "13px",
+              backdropFilter: "blur(12px)",
+            },
+          }}
+        />
       </body>
     </html>
   );
 }
+

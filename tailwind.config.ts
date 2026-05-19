@@ -32,6 +32,15 @@ module.exports = {
         'glow-gold': '0 0 18px rgba(201,169,110,0.55), 0 0 40px rgba(201,169,110,0.25)',
         'glow-gold-hover': '0 0 28px rgba(232,201,122,0.75), 0 0 60px rgba(232,201,122,0.35)',
       },
+      animation: {
+        'shimmer': 'shimmer 2s linear infinite',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
     },
   },
   plugins: [],
