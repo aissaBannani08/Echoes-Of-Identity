@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { MemoryConstellation } from "@/components/echoes/memory-constellation";
 import { Sparkles, BookOpen, MapPin, MousePointer2 } from "lucide-react";
+import Link from "next/link";
 
 export function ArchiveScene() {
   return (
@@ -57,12 +58,14 @@ export function ArchiveScene() {
               transition={{ delay: 2 }}
               className="pointer-events-auto"
             >
-              <GlassButton 
-                className="font-cinzel text-[11px] tracking-[0.3em] uppercase min-w-[240px]"
-              >
-                Enter the Archive
-                <div className="w-6 h-px bg-white/30" />
-              </GlassButton>
+              <Link href="/archive" passHref legacyBehavior>
+                <GlassButton 
+                  className="font-cinzel text-[11px] tracking-[0.3em] uppercase min-w-[240px]"
+                >
+                  Enter the Archive
+                  <div className="w-6 h-px bg-white/30" />
+                </GlassButton>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

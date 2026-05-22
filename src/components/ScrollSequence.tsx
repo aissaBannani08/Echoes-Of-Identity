@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
+import Link from "next/link";
 
 const TOTAL_FRAMES = 240;
 const LERP = 0.12;
@@ -336,23 +337,28 @@ function TheCall({ progress }: { progress: any }) {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center mb-16">
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="relative px-12 py-5 bg-gold text-midnight font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm shadow-glow-gold hover:shadow-glow-gold-hover transition-all duration-300 group overflow-hidden"
-          >
-            <span className="relative z-10">Enter the Archive</span>
-            <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-          </motion.button>
+          <Link href="/archive" passHref legacyBehavior>
+            <motion.a
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative px-12 py-5 bg-gold text-midnight font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm shadow-glow-gold hover:shadow-glow-gold-hover transition-all duration-300 group overflow-hidden inline-block text-center cursor-pointer"
+            >
+              <span className="relative z-10">Enter the Archive</span>
+              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+            </motion.a>
+          </Link>
 
-          <motion.button
+          <motion.a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSehebJoWlzBWEFtyJeUEYBeN0rZcwisa6dUYC0m64R1LdBLPA/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="px-12 py-5 border border-gold/40 text-gold font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm hover:bg-gold/5 hover:border-gold transition-all duration-300"
+            className="px-12 py-5 border border-gold/40 text-gold font-cinzel font-bold text-xs tracking-[0.25em] rounded-sm hover:bg-gold/5 hover:border-gold transition-all duration-300 inline-block text-center cursor-pointer"
             style={{ textShadow: "0 0 15px rgba(0,0,0,0.5)" }}
           >
             Join the Project
-          </motion.button>
+          </motion.a>
         </div>
 
         <div className="max-w-xl mx-auto">
