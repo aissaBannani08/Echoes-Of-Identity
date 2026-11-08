@@ -2,120 +2,36 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import archiveData from "@/content/story-archive.json";
+
+const summaries: Record<string, string> = {
+  "Gaza": "Six personal accounts of family, displacement, daily life, and hope.",
+  "Djerba": "Stories of Jewish identity, education, language, religion, and belonging.",
+  "Tunisian Medina": "A shoemaker’s account of craft, work, and knowledge passed between generations.",
+  "La Goulette and Tunis": "Interview-based narratives on community, religious life, and shared memory.",
+  "Russian-Jewish Immigration": "Six narratives about one family’s migration from the Soviet Union to the United States.",
+  "Tunisian Jewish Communities": "Additional interview-based accounts of Jewish life in Djerba, Nabeul, and Tunis."
+};
+const counts = (archiveData as { collection: string }[]).reduce<Record<string, number>>((result, story) => {
+  result[story.collection] = (result[story.collection] ?? 0) + 1;
+  return result;
+}, {});
 
 export default function ArchiveSection() {
-  const cards = [
-    { 
-      title: "Identity", 
-      desc: "Navigating dual heritage matching faith with nationality.", 
-      country: "Tunisia 🇹🇳",
-      image: "/images/archive/identity_bg_1778361042192.png",
-      spanClass: "md:col-span-2 md:row-span-2"
-    },
-    { 
-      title: "Immigration", 
-      desc: "The journey to a new world and the memories left behind.", 
-      country: "United States 🇺🇸",
-      image: "/images/archive/immigration_bg_1778361098211.png",
-      spanClass: "md:col-span-1 md:row-span-1"
-    },
-    { 
-      title: "Discrimination", 
-      desc: "Facing history and finding courage in community.", 
-      country: "Ivory Coast 🇨🇮",
-      image: "/images/archive/discrimination_bg_1778361178704.png",
-      spanClass: "md:col-span-1 md:row-span-1"
-    },
-    { 
-      title: "Culture", 
-      desc: "Preserving recipes, music, and the languages of home.", 
-      country: "Morocco 🇲🇦",
-      image: "/images/archive/culture_bg_1778361232792.png",
-      spanClass: "md:col-span-2 md:row-span-1"
-    },
-    { 
-      title: "Hardship", 
-      desc: "Stories of loss, struggle, and the difficult moments people have lived through.",
-      image: "/images/archive/hardship_bg_1778361245383.png",
-      spanClass: "md:col-span-1 md:row-span-1"
-    },
-  ];
-
-  return (
-    <section id="archive" className="w-full bg-[#05070A] py-32 px-6 md:px-12 relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1 }}
-          className="flex flex-col items-center mb-20 text-center"
-        >
-          <h2 className="font-cormorant text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#C9A96E] via-[#E8C97A] to-[#C9A96E] mb-6 tracking-wide drop-shadow-sm">
-            Curated Voices
-          </h2>
-          <div className="w-px h-24 bg-gradient-to-b from-[#C9A96E] via-[#C9A96E]/50 to-transparent mb-8"></div>
-          <p className="font-inter text-parchment/80 max-w-3xl text-lg md:text-xl font-light leading-relaxed">
-            This living archive is organized by the foundational human experiences that connect our communities worldwide. Explore the stories that shape us.
-          </p>
-        </motion.div>
-
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px] md:auto-rows-[280px]">
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`group relative overflow-hidden rounded-sm border border-white/5 hover:border-[#C9A96E]/40 transition-colors duration-700 ${card.spanClass}`}
-            >
-              <Link href="/archive" className="block w-full h-full relative cursor-pointer">
-                {/* Background Image */}
-                <Image
-                  src={card.image}
-                  alt={`${card.title}: ${card.desc} - Echoes of Identity cultural preservation project`}
-                  fill
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                
-                {/* Overlays for contrast and moody feel */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-700"></div>
-                <div className="absolute inset-0 bg-[#0A0E18]/20 mix-blend-multiply"></div>
-
-                {/* Content */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                    {card.country && (
-                      <span className="inline-block font-inter text-[10px] uppercase tracking-[0.25em] text-[#C9A96E] mb-3 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        {card.country}
-                      </span>
-                    )}
-                    
-                    <h3 className="font-cormorant text-3xl md:text-4xl text-white mb-3 drop-shadow-lg">
-                      {card.title}
-                    </h3>
-                    
-                    <p className="font-inter text-parchment/70 text-sm md:text-base leading-relaxed max-w-md font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150">
-                      {card.desc}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Decorative border accent */}
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C9A96E] group-hover:w-full transition-all duration-700 ease-out"></div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
+  const collections = Object.entries(counts);
+  return <section id="archive" className="relative w-full bg-[#05070A] px-6 py-24 md:px-12">
+    <div className="mx-auto max-w-7xl">
+      <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 text-center">
+        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#C9A84C]">The collection</p>
+        <h2 className="font-cormorant text-5xl text-[#F5F0E8] md:text-7xl">Explore the Archive</h2>
+        <p className="mx-auto mt-5 max-w-2xl font-inter text-sm leading-relaxed text-parchment/65">Browse the interview-based stories currently available, organized by their source collection.</p>
+      </motion.div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{collections.map(([name, count], index) => <motion.div key={name} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="rounded border border-white/10 bg-white/[0.025] p-6 transition hover:border-[#C9A84C]/50">
+        <p className="text-xs uppercase tracking-[0.2em] text-[#C9A84C]">{count} {count === 1 ? "story" : "stories"}</p>
+        <h3 className="mt-3 font-cormorant text-3xl text-[#F5F0E8]">{name}</h3>
+        <p className="mt-3 min-h-12 font-inter text-sm leading-relaxed text-parchment/55">{summaries[name] ?? "Stories drawn from the supplied oral-history material."}</p>
+        <Link href="/archive" className="mt-5 inline-flex min-h-11 items-center text-xs uppercase tracking-[0.18em] text-[#C9A84C] hover:underline">Browse stories →</Link>
+      </motion.div>)}</div>
+    </div>
+  </section>;
 }
-

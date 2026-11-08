@@ -20,7 +20,7 @@ const _env = envSchema.safeParse({
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL?.trim(),
 });
 
-if (!_env.success) {
+if (!_env.success && process.env.NODE_ENV !== "development") {
   const formatted = _env.error.issues
     .map((i) => `  ✗ ${i.path.join(".")}: ${i.message}`)
     .join("\n");
@@ -29,4 +29,16 @@ if (!_env.success) {
   );
 }
 
-export const env = _env.data;
+const developmentFallback = {
+  NEXT_PUBLIC_SUPABASE_URL: "https://your-project.supabase.co",
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: "development-placeholder-key",
+  NEXT_PUBLIC_SITE_URL: "http://localhost:3000",
+};
+
+if (!_env.success) {
+  console.warn(
+    "[Echoes of Identity] Supabase is not configured. Public pages are available for local preview; authentication and profile features will not work until real values are added to .env.local."
+  );
+}
+
+export const env = _env.success ? _env.data : developmentFallback;

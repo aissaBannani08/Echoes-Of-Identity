@@ -247,9 +247,9 @@ function ArchiveReveal({ progress }: { progress: any }) {
           className="font-inter text-base md:text-lg leading-relaxed space-y-3"
           style={{ color: "rgba(245,239,224,0.92)", textShadow: SHARP_SHADOW }}
         >
-          <li>Testimonies from Tunisia, Ivory Coast, the United States, and beyond.</li>
-          <li>Stories of immigration, identity, discrimination, and culture.</li>
-          <li>Submitted by youth from over 20 chapters worldwide.</li>
+          <li>Interview-based stories from Gaza and Tunisian communities.</li>
+          <li>Narratives of family, identity, education, migration, and craft.</li>
+          <li>Browse each story with its source context and attribution.</li>
         </ul>
       </div>
     </motion.div>
@@ -333,7 +333,7 @@ function TheCall({ progress }: { progress: any }) {
           className="font-cinzel text-sm md:text-base font-bold tracking-[0.2em] mb-12"
           style={{ color: "#E8C97A", textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}
         >
-          Join the archive · Share a testimony · Start a chapter
+          Explore the archive · Learn about contributing · Contact the project
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center mb-16">

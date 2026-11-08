@@ -10,9 +10,9 @@ const items = [
   {
     num: "01",
     title: "Submit a Testimony",
-    desc: "Record your own story or that of a family member. We provide a guided process to ensure your history is preserved.",
-    action: "Start Submission",
-    href: "#",
+    desc: "Read how consent and attribution work, then contact the project to discuss sharing a story.",
+    action: "Read consent information",
+    href: "/contribute",
     bgGradient: "radial-gradient(circle at center, rgba(201,169,110,0.08) 0%, transparent 60%)"
   },
   {
@@ -25,10 +25,10 @@ const items = [
   },
   {
     num: "03",
-    title: "Start a Chapter",
-    desc: "Launch an Echoes of Identity student chapter in your university or community to build local bridges.",
-    action: "Get Started",
-    href: "#",
+    title: "Discuss a Chapter",
+    desc: "Contact the project to discuss a chapter idea and whether it fits the work underway.",
+    action: "Contact the team",
+    href: "mailto:info@echoesofidentity.org?subject=Chapter%20idea",
     bgGradient: "radial-gradient(circle at center, rgba(245,239,224,0.05) 0%, transparent 60%)"
   }
 ];

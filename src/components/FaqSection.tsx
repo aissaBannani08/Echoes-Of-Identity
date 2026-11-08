@@ -5,21 +5,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const faqs = [
-  { 
-    question: "What is Echoes of Identity?", 
-    answer: "Echoes of Identity is a youth-led initiative aimed at preserving the human stories of Jewish and Muslim communities worldwide through personal storytelling." 
+  {
+    question: "What is Echoes of Identity?",
+    answer: "Echoes of Identity is a youth-led initiative aimed at preserving the human stories of Jewish and Muslim communities worldwide through personal storytelling."
   },
-  { 
-    question: "How do I submit a testimony?", 
-    answer: "Schedule an interview or use our digital portal to upload personal artifacts and stories directly to the archive." 
+  {
+    question: "How do I submit a testimony?",
+    answer: "This website does not currently have a story submission form. Please contact the project first to discuss an interview, consent, attribution, and how to share materials."
   },
-  { 
-    question: "How do I start a chapter?", 
-    answer: "We provide a comprehensive framework and training kit to help you document untold stories in your own university or community." 
+  {
+    question: "How do I start a chapter?",
+    answer: "Email the project to discuss a chapter idea and what support may be available."
   },
-  { 
-    question: "Is the archive public?", 
-    answer: "Yes, the core archive is public. Sensitive testimonies are preserved with restricted access to honor the privacy of storytellers." 
+  {
+    question: "Is the archive public?",
+    answer: "The stories currently published in the archive are public. Please contact the project before sharing sensitive material so publication and attribution can be discussed with you."
   }
 ];
 
@@ -31,9 +31,9 @@ export default function FaqSection() {
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        
+
         <div className="text-center mb-24">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -53,7 +53,7 @@ export default function FaqSection() {
         </div>
 
       </div>
-      
+
       {/* Global Glass Filter Definition */}
       <svg className="hidden">
         <defs>
@@ -87,11 +87,11 @@ function LiquidFaqCard({ faq, index }: { faq: any, index: number }) {
       )}>
         {/* Outer Shadow/Glow */}
         <div className="absolute inset-0 rounded-[40px] shadow-[0_0_20px_rgba(201,169,110,0.05),inset_0_0_2px_rgba(255,255,255,0.1)] transition-all duration-700" />
-        
+
         {/* Inner Glass Layer */}
-        <div 
+        <div
           className="absolute inset-0 rounded-[40px] opacity-40 transition-all duration-700"
-          style={{ 
+          style={{
             backdropFilter: 'url("#faq-glass") blur(12px)',
             background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)'
           }}
@@ -113,7 +113,7 @@ function LiquidFaqCard({ faq, index }: { faq: any, index: number }) {
           )}>
             {faq.question}
           </h3>
-          <motion.div 
+          <motion.div
             animate={{ rotate: isOpen ? 135 : 0 }}
             className={cn(
               "w-8 h-8 rounded-full border flex items-center justify-center text-xl font-light transition-colors duration-500",
