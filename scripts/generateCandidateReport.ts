@@ -70,8 +70,8 @@ for (const file of markdownFiles) {
   const raw = fs.readFileSync(file, 'utf-8');
   const { data, body } = parseFrontMatter(raw);
   const title = data.title || null;
-  const contributor = data.contributor || null;
-  const anonymous = data.anonymous === 'true' || data.anonymous === true;
+  let contributor = data.contributor || null;
+  let anonymous = data.anonymous === 'true' || data.anonymous === true;
   const date = data.date || null;
   const slug = data.slug ? String(data.slug) : title ? slugify(String(title)) : null;
   const category = data.category || null;
