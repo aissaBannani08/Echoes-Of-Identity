@@ -76,7 +76,7 @@ export default function StoryCard({ story, index, size = 'large' }: StoryCardPro
         {/* Footer */}
         <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/[0.05]">
           <Link
-            href={`/stories/gaza/${story.slug}`}
+            href={`/stories/${story.collection.toLowerCase().replace(/\s+/g, '-')}/${story.slug}`}
             className="inline-flex items-center gap-2 font-inter text-[10px] uppercase tracking-[0.25em] text-gold/70 hover:text-gold transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded-sm"
             aria-label={`Read ${story.name}'s full story: ${story.title}`}
           >

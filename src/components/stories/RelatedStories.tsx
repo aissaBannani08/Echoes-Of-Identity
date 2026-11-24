@@ -38,7 +38,7 @@ export default function RelatedStories({ stories }: RelatedStoriesProps) {
             transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <Link
-              href={`/stories/gaza/${story.slug}`}
+              href={`/stories/${story.collection.toLowerCase().replace(/\s+/g, '-')}/${story.slug}`}
               className="group flex flex-col border border-white/[0.05] hover:border-gold/20 p-7 transition-all duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-gold h-full"
               aria-label={`Read ${story.name}'s story: ${story.title}`}
             >

@@ -75,7 +75,7 @@ export default function FeaturedStory({ story }: FeaturedStoryProps) {
 
           {/* CTA */}
           <Link
-            href={`/stories/gaza/${story.slug}`}
+            href={`/stories/${story.collection.toLowerCase().replace(/\s+/g, '-')}/${story.slug}`}
             className="inline-flex items-center gap-3 font-inter text-[10px] uppercase tracking-[0.3em] text-gold hover:text-parchment transition-colors group/link focus:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded-sm"
             aria-label={`Read the full story: ${story.title}`}
           >

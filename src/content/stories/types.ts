@@ -4,12 +4,24 @@ export type StoryTheme =
   | 'Home and Belonging'
   | 'Memory and Loss'
   | 'Everyday Life'
-  | 'Resilience and Hope';
+  | 'Resilience and Hope'
+  | 'Identity and Religion'
+  | 'Immigration and Diaspora'
+  | 'Craft and Tradition'
+  | 'Community and Coexistence'
+  | 'Language and Heritage'
+  | 'Displacement'
+  | 'Hardship and Survival';
 
-export type StoryCollection = 'Gaza';
+export type StoryCollection =
+  | 'Gaza'
+  | 'Djerba'
+  | 'Tunisia'
+  | 'Russia'
+  | 'La Goulette';
 
 export interface Story {
-  /** URL slug — determines the route /stories/gaza/[slug] */
+  /** URL slug — determines the route /stories/[collection]/[slug] */
   slug: string;
   /** Contributor's published name or approved pseudonym */
   name: string;
@@ -17,7 +29,7 @@ export interface Story {
   title: string;
   /** Short excerpt for landing page previews (2–4 sentences from the actual text) */
   excerpt: string;
-  /** Full first-person testimony — canonical source, not duplicated elsewhere */
+  /** Full first-person or third-person narrative — canonical source, not duplicated elsewhere */
   content: string;
   /** Collection this story belongs to */
   collection: StoryCollection;
@@ -41,4 +53,17 @@ export interface Story {
    * 'pending' = received but awaiting editorial sign-off.
    */
   consentStatus: 'approved' | 'pending';
+  /**
+   * Optional contributor profile slug — groups multiple stories from the same person.
+   * If set, a contributor profile section links all their stories together.
+   */
+  contributorSlug?: string;
+  /**
+   * Optional location description for display (e.g. "Gaza, Palestine", "Djerba, Tunisia")
+   */
+  location?: string;
+  /**
+   * Optional approximate year/period for archival display (e.g. "2024", "1970s–1980s")
+   */
+  period?: string;
 }

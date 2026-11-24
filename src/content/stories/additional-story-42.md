@@ -1,0 +1,14 @@
+---
+title: "Nabeul's Jewish Businesses and the Food People Remember"
+slug: "additional-story-42"
+---
+
+Albert remembers the Jewish community of Nabeul as particularly active in commerce. He contrasts this with Djerba, where Jewish residents were also involved in trade, and Tunis, where he says they were more involved in industry. These differences formed part of the distinct local character of Jewish communities across the country.
+
+When discussing Nabeul, Albert recalls businesses associated with everyday food. He mentions places where people could buy brik, sandwiches, and other local foods, as well as establishments known for making zlabia. These businesses were not known only within the Jewish community. Muslim customers also visited them, and the establishments formed part of the wider town's commercial life.
+
+The details are important because they show how a community can become woven into the identity of a place through ordinary services. A food business is part of daily routine: people stop by, buy something familiar, speak with the person serving them, and return another day. Over time, the establishment becomes a recognizable part of the neighbourhood.
+
+Albert says that no Jews remain living in Nabeul today. His recollections therefore preserve something of a social and commercial landscape that has largely disappeared. The shops and food businesses he describes were not simply economic enterprises. They were places where Jewish and Muslim residents encountered one another through shared tastes and everyday habits.
+
+*Source: Albert. Based on interview notes for Echoes of Identity.*

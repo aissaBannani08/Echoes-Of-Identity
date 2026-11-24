@@ -71,8 +71,8 @@ export default function StoryClient({ story, relatedStories }: StoryClientProps)
           >
             <Breadcrumb
               items={[
-                { label: 'Stories', href: '/stories/gaza' },
-                { label: 'Gaza', href: '/stories/gaza' },
+                { label: 'Stories', href: '/stories' },
+                { label: story.collection, href: `/stories/${story.collection.toLowerCase().replace(/\s+/g, '-')}` },
               ]}
               current={story.name}
             />
@@ -87,7 +87,7 @@ export default function StoryClient({ story, relatedStories }: StoryClientProps)
           >
             <div className="h-px w-8 bg-gold/30" aria-hidden="true" />
             <span className="font-inter text-[9px] uppercase tracking-[0.5em] text-gold/50">
-              Personal Testimony · Gaza
+              Personal Testimony · {story.collection}
             </span>
           </motion.div>
 
@@ -153,16 +153,16 @@ export default function StoryClient({ story, relatedStories }: StoryClientProps)
             className="mt-20 pt-12 border-t border-white/[0.06]"
           >
             <Link
-              href="/stories/gaza"
+              href="/stories"
               className="inline-flex items-center gap-3 font-inter text-[10px] uppercase tracking-[0.3em] text-gold/60 hover:text-gold transition-colors group focus:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded-sm"
-              aria-label="Return to the Gaza story collection"
+              aria-label="Return to all stories"
             >
               <ArrowLeft
                 size={13}
                 className="transition-transform group-hover:-translate-x-1"
                 aria-hidden="true"
               />
-              Return to collection
+              All Stories
             </Link>
           </motion.div>
 
